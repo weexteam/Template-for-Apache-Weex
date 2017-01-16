@@ -1,8 +1,7 @@
 {
   "name": "weex-template",
-  "version": "0.0.1",
-  "description": "to create s simple weex project",
-  "main": "./vue-template",
+  "version": "0.0.2",
+  "description": "to create a simple weex project",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

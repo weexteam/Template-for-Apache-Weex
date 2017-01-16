@@ -14,7 +14,7 @@
 <script>
   export default {
     data: {
-      logoUrl: 'https://alibaba.github.io/weex/img/weex_logo_blue@3x.png',
+      logoUrl: 'https://img.alicdn.com/tps/TB1SwrHPXXXXXabXVXXXXXXXXXX-720-343.png',
       target: 'World'
     },
     methods: {
