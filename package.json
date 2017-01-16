@@ -1,0 +1,24 @@
+{
+  "name": "weex-template",
+  "version": "0.0.1",
+  "description": "to create s simple weex project",
+  "main": "./vue-template",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weexteam/weex-template.git"
+  },
+  "keywords": [
+    "weex",
+    "template",
+    "project"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weexteam/weex-template/issues"
+  },
+  "homepage": "https://github.com/weexteam/weex-template#readme"
+}
