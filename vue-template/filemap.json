@@ -1,0 +1,16 @@
+{
+  "files":[
+    ".babelrc",
+    ".eslintrc",
+    ".gitignore",
+    "app.js",
+    "assets",
+    "build",
+    "index.html",
+    "package.json",
+    "README.md",
+    "src",
+    "webpack.config.js",
+    "weex.html"
+  ]
+}
