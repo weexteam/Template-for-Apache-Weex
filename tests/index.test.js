@@ -2,7 +2,7 @@ var wt = require('../src/index');
 var expect = require('expect.js');
 var fs = require('fs');
 
-describe('test copy', function () {
+describe('test file initializing', function () {
   wt.initializing({
     skipPrompt: true,
     skipInstall: true,

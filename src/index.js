@@ -55,7 +55,7 @@ module.exports = {
   },
   // files proecss all files will be generate in here
   writing: function () {
-    var fileArr = require(pathTo.join(this.getTemplatePath(), this.options.template, FILEMAP))['files'];
+    var fileArr = require(pathTo.join(this.getTemplatePath(), this.options.template, FILEMAP)).files;
     var templatePath = pathTo.join(this.getTemplatePath(), this.options.template);
     fs.copyMultiFile(fileArr, templatePath, this.getDestPath());
   },
@@ -76,5 +76,9 @@ module.exports = {
   },
   end: function () {
     console.log(chalk.bold('All is Ready!!!'));
+  },
+  
+  copyAndReplace: function(src,dest,callback) {
+    
   }
 };
