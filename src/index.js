@@ -77,8 +77,8 @@ module.exports = {
   end: function () {
     console.log(chalk.bold('All is Ready!!!'));
   },
-  
-  copyAndReplace: function(src,dest,callback) {
-    
+  // a method to copy
+  copy: function(src,dest,callback) {
+    fs.copy(src,dest,callback);  
   }
 };
