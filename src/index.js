@@ -72,16 +72,20 @@ module.exports = {
       fileArr = fs.readDir(templatePath);
     }
     fs.copyMultiFile(fileArr, templatePath, this.getDestPath());
-    fs.replaceFile(pathTo.join(this.getDestPath(), 'package.json'), [
-      {
-        rule: /{{WEEX_APPNAME}}/,
-        contents: this.options.appname
-      },
-      {
-        rule: /{{WEEX_AUTHOR}}/,
-        contents: this.options.author
-      }
-    ]);
+    if (fs.exist(pathTo.join(this.getDestPath(), 'package.json'))) {
+      fs.replaceFile(pathTo.join(this.getDestPath(), 'package.json'), [
+        {
+          rule: /{{WEEX_APPNAME}}/,
+          contents: this.options.appname
+        },
+        {
+          rule: /{{WEEX_AUTHOR}}/,
+          contents: this.options.author
+        }
+      ]);
+    } else {
+      this.options.skipInstall = true;
+    }
   },
   install: function () {
     var self = this;
@@ -90,6 +94,12 @@ module.exports = {
       return exec('npm install').then(function (result) {
         var stdout = result.stdout;
         var stderr = result.stderr;
+        stdout.on('data', function (data) {
+          console.log(data);
+        });
+        stderr.on('data', function (data) {
+          console.log(data);
+        });
         console.log('stdout: ', stdout);
         console.log('stderr: ', stderr);
         self.end();

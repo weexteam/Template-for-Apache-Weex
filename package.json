@@ -1,6 +1,6 @@
 {
   "name": "weex-template",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "to create a simple weex project",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha ./tests/*.test.js",
