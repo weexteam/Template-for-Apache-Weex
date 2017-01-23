@@ -1,5 +1,5 @@
 {
-  "name": "WEEX_APPNAME",
+  "name": "{{WEEX_APPNAME}}",
   "description": "",
   "version": "0.1.1",
   "author": "",

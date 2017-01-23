@@ -59,11 +59,14 @@ module.exports = {
         fileArr = [];
     if(fs.exist(pathTo.join(templatePath, FILEMAP))) {
       fileArr = require(pathTo.join(this.getTemplatePath(), this.options.template, FILEMAP)).files;
-      
     } else {
       fileArr = fs.readDir(templatePath);
     }
     fs.copyMultiFile(fileArr, templatePath, this.getDestPath());
+    fs.replaceFile(pathTo.join(this.getDestPath(), 'package.json'), [{
+      rule: /{{WEEX_APPNAME}}/,
+      contents: this.options.appname
+    }]);
   },
   install: function () {
     var self = this;

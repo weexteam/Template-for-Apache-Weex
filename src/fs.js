@@ -20,8 +20,21 @@ module.exports = {
       self.copy(pathTo.join(src, item), pathTo.join(dest, item));
     });
   },
-  fileReplace: function () {
-    //
+  /**
+  * replace file contents
+  * @param dest the path of destination file
+  * @param regArr the rule you shold replace 
+  **/
+  replaceFile: function (dest,regarr) {
+    let content = fs.readFileSync(dest, {
+      encoding: 'utf-8'
+    });
+   regarr.forEach((regObj) => {
+      content = content.replace(regObj.rule, function () {
+        return regObj.contents.replace(/\\/g,'\\\\');
+      });  
+    })
+    return fs.writeFileSync(dest,content);
   },
   readDir: function(dirPath) {
     var files =  fse.readdirSync(dirPath);
