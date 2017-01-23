@@ -26,7 +26,7 @@ module.exports = {
   * @param regArr the rule you shold replace 
   **/
   replaceFile: function (dest,regarr) {
-    let content = fs.readFileSync(dest, {
+    var content = fs.readFileSync(dest, {
       encoding: 'utf-8'
     });
    regarr.forEach((regObj) => {
