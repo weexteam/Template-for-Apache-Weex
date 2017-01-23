@@ -8,6 +8,7 @@ var fs = require('./fs');
 // default params
 var defaultOptions = {
   appname: pathTo.basename(process.cwd()),
+  author: util.getGitUer(),
   skipPrompt: false,
   skipInstall: false,
   template: 'vue-template',
@@ -20,6 +21,13 @@ var questions = [
     type: 'input',
     name: 'appname',
     message: 'Generate a weex example (' + defaultOptions.appname + ')?',
+    default: defaultOptions.appname,
+    required: true
+  },
+  {
+    type: 'input',
+    name: 'author',
+    message: 'use this email (' + defaultOptions.author + ')?',
     default: defaultOptions.appname,
     required: true
   },
@@ -42,6 +50,7 @@ module.exports = {
         self.options.appname = result.appname;
         self.options.template = result.template;
         self.writing();
+        self.install();
       }
     }).catch(function (err) {
       console.error(err);
@@ -55,22 +64,29 @@ module.exports = {
   },
   // files proecss all files will be generate in here
   writing: function () {
-    var templatePath = pathTo.join(this.getTemplatePath(), this.options.template),
-        fileArr = [];
-    if(fs.exist(pathTo.join(templatePath, FILEMAP))) {
+    var templatePath = pathTo.join(this.getTemplatePath(), this.options.template);
+    var fileArr = [];
+    if (fs.exist(pathTo.join(templatePath, FILEMAP))) {
       fileArr = require(pathTo.join(this.getTemplatePath(), this.options.template, FILEMAP)).files;
     } else {
       fileArr = fs.readDir(templatePath);
     }
     fs.copyMultiFile(fileArr, templatePath, this.getDestPath());
-    fs.replaceFile(pathTo.join(this.getDestPath(), 'package.json'), [{
-      rule: /{{WEEX_APPNAME}}/,
-      contents: this.options.appname
-    }]);
+    fs.replaceFile(pathTo.join(this.getDestPath(), 'package.json'), [
+      {
+        rule: /{{WEEX_APPNAME}}/,
+        contents: this.options.appname
+      },
+      {
+        rule: /{{WEEX_AUTHOR}}/,
+        contents: this.options.author
+      }
+    ]);
   },
   install: function () {
     var self = this;
     if (!this.options.skipInstall) {
+      console.log('installing ...');
       return exec('npm install').then(function (result) {
         var stdout = result.stdout;
         var stderr = result.stderr;
@@ -85,9 +101,10 @@ module.exports = {
   },
   end: function () {
     console.log(chalk.bold('All is Ready!!!'));
+    util.echoScriptSCommand(pathTo.join(this.getDestPath(), 'package.json'));
   },
   // a method to copy
-  copy: function(src,dest,callback) {
-    fs.copy(src,dest,callback);  
+  copy: function (src, dest, callback) {
+    fs.copy(src, dest, callback);
   }
 };

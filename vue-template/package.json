@@ -2,7 +2,7 @@
   "name": "{{WEEX_APPNAME}}",
   "description": "",
   "version": "0.1.1",
-  "author": "",
+  "author": "{{WEEX_AUTHOR}}",
   "private": true,
   "main": "index.js",
   "keywords": [

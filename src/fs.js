@@ -10,7 +10,7 @@ module.exports = {
   copy: function (src, dest, callback) {
     fse.copySync(src, dest);
     console.log('Create: ' + chalk.grey(src + ' -> ' + dest));
-    if (typeof callback == 'function') {
+    if (typeof callback === 'function') {
       callback();
     }
   },
@@ -23,21 +23,21 @@ module.exports = {
   /**
   * replace file contents
   * @param dest the path of destination file
-  * @param regArr the rule you shold replace 
+  * @param regArr the rule you shold replace
   **/
-  replaceFile: function (dest,regarr) {
+  replaceFile: function (dest, regarr) {
     var content = fs.readFileSync(dest, {
       encoding: 'utf-8'
     });
-   regarr.forEach((regObj) => {
+    regarr.forEach((regObj) => {
       content = content.replace(regObj.rule, function () {
-        return regObj.contents.replace(/\\/g,'\\\\');
-      });  
+        return regObj.contents;
+      });
     })
-    return fs.writeFileSync(dest,content);
+    return fs.writeFileSync(dest, content);
   },
-  readDir: function(dirPath) {
-    var files =  fse.readdirSync(dirPath);
+  readDir: function (dirPath) {
+    var files = fse.readdirSync(dirPath);
     return files;
   },
   remove: function (path) {

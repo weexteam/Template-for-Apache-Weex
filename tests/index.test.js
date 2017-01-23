@@ -16,8 +16,7 @@ describe('test file initializing', function () {
       console.log(pkg.name);
       expect(pkg.name).to.be('weex-template');
       done();
-    }, 2500);
-      
+    }, 2500);      
   });
 });
 
