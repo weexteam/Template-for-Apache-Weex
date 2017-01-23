@@ -10,5 +10,8 @@ describe('fs methods test', function () {
     fs.copyMultiFile(['a.text','b'],'./tests/source','./tests/dest');
     expect(fs.exist('./tests/dest/b/b.text')).to.be(true);
   });
-  
+  it('test directory structor', function() {
+    fs.readDir('./tests/source');
+    expect(Array.isArray(fs.readDir('./tests/source'))).to.be(true);
+  });
 });

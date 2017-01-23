@@ -7,8 +7,12 @@ To cerate a simple weex project
 
 ### start
 
+``` bash
+npm install weex-template --save
+```
+
 ``` js
-var wt = require('../src/index');
+var wt = require('weex-template');
 wt.initializing({
   tempate:'weexpack-template'
 });

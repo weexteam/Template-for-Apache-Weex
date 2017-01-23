@@ -23,6 +23,10 @@ module.exports = {
   fileReplace: function () {
     //
   },
+  readDir: function(dirPath) {
+    var files =  fse.readdirSync(dirPath);
+    return files;
+  },
   remove: function (path) {
     fse.remove(path);
   },

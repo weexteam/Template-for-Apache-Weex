@@ -1,8 +1,8 @@
 {
-  "name": "{{ name }}",
-  "description": "{{ description }}",
+  "name": "WEEX_APPNAME",
+  "description": "",
   "version": "0.1.1",
-  "author": "{{ author }}",
+  "author": "",
   "private": true,
   "main": "index.js",
   "keywords": [
